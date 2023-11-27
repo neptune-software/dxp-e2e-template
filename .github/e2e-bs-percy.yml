@@ -1,0 +1,89 @@
+name: E2E - Browserstack & Percy
+
+on:
+  schedule:  # Runs at 05:00 UTC on Mon, Tue, Wed, Thu, Fri.
+  #  - cron: '0 5 * * 1,2,3,4,5'
+  push:
+  workflow_dispatch:
+    inputs:
+      bs_os:
+        description: "Operating System"
+        required: true
+        type: choice
+        options:
+          - "Windows"
+          - "OS X"
+      bs_os_version:
+        description: "Operating System Version"
+        required: true
+        type: choice
+        options:
+          - "11"
+          - "10"
+          - "8.1"
+          - "8"
+          - "7"
+          - "XP"
+          - "Ventura"        
+          - "Monterey"
+          - "Big Sur"
+          - "Catalina"
+          - "Mojave"
+          - "High Sierra"
+          - "Sierra"
+          - "El Capitan"
+          - "Yosemite"
+          - "Mavericks"
+          - "Mountain Lion"
+          - "Lion"
+          - "Snow Leopard"
+      bs_browser:
+        description: "Browser"
+        required: true
+        type: choice
+        options:
+          - Chrome
+          - Firefox
+          - Edge
+          - Safari
+      bs_browser_version:
+        description: "Browser Version"
+        required: true
+        default: 'latest'
+
+permissions: read-all
+
+jobs:
+  test:
+    name: "E2E Test" 
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout the repository"
+        uses: actions/checkout@v3
+      - name: "Use Node 18"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: "Running npm ci (precise version of npm install)"
+        run: npm ci
+        env:
+          npm_config_PACKAGES_AUTH_TOKEN: ${{ secrets.PACKAGES_AUTH_TOKEN }}
+      - name: "run npm run wdio:percy:bs"
+        run: npm run wdio:percy:bs
+        env:
+          # Actual Test Settings
+          SAP_URL: ${{ secrets.SAP_URL }}
+          SAP_CLIENT: ${{ secrets.SAP_CLIENT }}
+          SAP_USER: ${{ secrets.SAP_USER }}
+          SAP_PASSWORD: ${{ secrets.SAP_PASSWORD }}
+          BROWSER_URL: ${{ secrets.BROWSER_URL }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          BROWSERSTACK_OS1: ${{inputs.bs_os || 'Windows'}}   
+          BROWSERSTACK_OS_VERSION1: ${{inputs.bs_os_version || '11'}}
+          BROWSERSTACK_BROWSER1: ${{inputs.bs_browser || 'Chrome'}}
+          BROWSERSTACK_BROWSER_VERSION1: ${{inputs.bs_browser_version || 'latest'}} 
+          BROWSERSTACK_PROJECT: "My First Test Project" 
+          BROWSERSTACK_BUILD_NAME: "Unit Test App"
+          BROWSERSTACK_BUILD_TAG: "1.0.0"
