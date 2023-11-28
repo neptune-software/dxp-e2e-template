@@ -88,6 +88,8 @@ describe("Neptune Unit Test Launchpad", () => {
 
         await expect(genericText).toBe("ABCD123ÄÖÜ");
 
+        await tile.close();
+
         if (percySnapshot) {
             await percySnapshot("Launchpad - Generic Button Press", {});
         }
