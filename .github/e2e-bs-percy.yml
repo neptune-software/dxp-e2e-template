@@ -4,6 +4,9 @@ on:
   schedule:  # Runs at 05:00 UTC on Mon, Tue, Wed, Thu, Fri.
   #  - cron: '0 5 * * 1,2,3,4,5'
   push:
+  paths:
+    - 'test/**'
+    - 'wdio.conf.ts'
   workflow_dispatch:
     inputs:
       bs_os:
