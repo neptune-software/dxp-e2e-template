@@ -55,6 +55,8 @@ describe("Neptune Unit Test App", () => {
             webapp: true,
             saml2Disabled: true,
             neptuneDebug: true,
+            url: process.env.SAP_URL,
+            client: process.env.SAP_CLIENT,
         })
 
         const webappLogin = new dxpE2E.sapEdition.WebappLogin();
