@@ -72,8 +72,6 @@ jobs:
           node-version: "18"
       - name: "Running npm ci (precise version of npm install)"
         run: npm ci
-        env:
-          npm_config_PACKAGES_AUTH_TOKEN: ${{ secrets.PACKAGES_AUTH_TOKEN }}
       - name: "run npm run wdio:percy:bs"
         run: npm run wdio:percy:bs
         env:
