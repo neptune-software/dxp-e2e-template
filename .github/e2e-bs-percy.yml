@@ -1,12 +1,15 @@
 name: E2E - Browserstack & Percy
 
 on:
-  schedule:  # Runs at 05:00 UTC on Mon, Tue, Wed, Thu, Fri.
+  # if you want the test to be executed reguarly the uncommend the following two lines...
+  # schedule:  # Runs at 05:00 UTC on Mon, Tue, Wed, Thu, Fri.
   #  - cron: '0 5 * * 1,2,3,4,5'
-  push:
-  paths:
-    - 'test/**'
-    - 'wdio.conf.ts'
+
+  # If you want to run the test automatically on a push event uncommend the following 4 lines
+  # push:
+  # paths:
+  #   - 'test/**'
+  #   - 'wdio.conf.ts'
   workflow_dispatch:
     inputs:
       bs_os:
