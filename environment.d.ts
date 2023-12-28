@@ -5,7 +5,7 @@ declare global {
       SAP_PASSWORD: string;
       SAP_URL: string;
       SAP_CLIENT: string;
-      DXP_EDITION_VERSION: string;
+      DXP_SAP_EDITION_VERSION: string;
       BROWSER_URL: string;
       PERCY_TOKEN: string;
       HEADLESS: string;

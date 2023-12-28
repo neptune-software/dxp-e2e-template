@@ -43,7 +43,7 @@ describe("Neptune Unit Test App", () => {
             wdi5: wdi5,
             browser: browser,
             dxpEditionType: dxpE2E.common.DxpEditionType.sapEdition,
-            dxpVersion: process.env.DXP_EDITION_VERSION || "23.10.0000"
+            dxpVersion: process.env.DXP_SAP_EDITION_VERSION || "23.10.0000"
         });
     });
 
