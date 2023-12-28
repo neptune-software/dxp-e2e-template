@@ -78,6 +78,7 @@ jobs:
         run: npm run wdio:percy:bs
         env:
           # Actual Test Settings
+          DXP_SAP_EDITION_VERSION: ${{vars.DXP_SAP_EDITION_VERSION}}
           SAP_URL: ${{ secrets.SAP_URL }}
           SAP_CLIENT: ${{ secrets.SAP_CLIENT }}
           SAP_USER: ${{ secrets.SAP_USER }}
