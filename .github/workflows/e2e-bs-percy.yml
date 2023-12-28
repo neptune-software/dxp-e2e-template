@@ -93,3 +93,4 @@ jobs:
           BROWSERSTACK_PROJECT: "My First Test Project" 
           BROWSERSTACK_BUILD_NAME: "Unit Test App"
           BROWSERSTACK_BUILD_TAG: "1.0.0"
+          BROWSERSTACK_LOCAL: ${{env.BROWSERSTACK_LOCAL}}
