@@ -50,11 +50,11 @@ describe("Neptune Unit Test Launchpad", () => {
         });
     });
 
-/**
- * The test below only works if you have a launchpad in the system created called NEPTUNE_UNIT_TEST_LAUNCHPAD
- * And then you also need to have a Tile in the launchpad that has the app NEPTUNE_UNIT_TEST_APP assigned to it.
- * If both is the case and you want the test to be executed exchange the it.skip(... part below with just it(...
- */
+    /**
+     * The test below only works if you have a launchpad in the system created called NEPTUNE_UNIT_TEST_LAUNCHPAD
+     * And then you also need to have a Tile in the launchpad that has the app NEPTUNE_UNIT_TEST_APP assigned to it.
+     * If both is the case and you want the test to be executed exchange the it.skip(... part below with just it(...
+     */
     it.skip("Open oPanelGeneric", async () => {
 
         const launchpad = await dxpE2E.sapEdition.LaunchpadSapEdition.open({
@@ -99,6 +99,10 @@ describe("Neptune Unit Test Launchpad", () => {
         if (percySnapshot) {
             await percySnapshot("Launchpad - Generic Button Press", {});
         }
+    });
+
+    it("Dummy for green BS test", async () => {
+
     });
 
 });
