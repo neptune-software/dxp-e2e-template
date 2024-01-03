@@ -1,7 +1,13 @@
 import * as dxpE2E from "@neptune-software/dxp-e2e-toolbox";
 import * as dotenv from "dotenv";
 import { default as _wdi5 } from "wdio-ui5-service";
-import percySnapshot from "@percy/webdriverio";
+
+// FUNCTION TO USE WITH "Browser Selection to be handled by = "Percy"": 
+// import percySnapshot from "@percy/webdriverio";
+
+// FUNCTION TO USE WITH "Browser Selection to be handled by = "Automate"":
+//@ts-ignore <-- https://github.com/percy/percy-selenium-js/issues/429
+import { percyScreenshot } from "@percy/selenium-webdriver";
 
 import Panel from "sap/m/Panel";
 import Text from "sap/m/Text";
@@ -81,10 +87,12 @@ describe("Neptune Unit Test App", () => {
         genericText = await genericTextControl.getText(false);
 
         await expect(genericText).toBe("ABCD123ÄÖÜ");
-        
-        if (percySnapshot) {
-            await percySnapshot("Standalone - Generic Button Press", {});
-        }
+
+        // FUNCTION TO USE WITH "Browser Selection to be handled by = "Percy"":
+        // await percySnapshot(driver, "Standalone - Generic Button Press", {});
+
+        // FUNCTION TO USE WITH "Browser Selection to be handled by = "Automate"":
+        await percyScreenshot(driver, "Standalone - Generic Button Press", {});
 
     });
 
